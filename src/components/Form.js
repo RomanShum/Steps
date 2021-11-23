@@ -41,6 +41,13 @@ function Form() {
     setForm({ date: "", km: 1 });
   };
 
+  const onRemove = (e) => {
+    let new_data = data.filter(
+      (item) => item.date !== e.target.getAttribute("date")
+    );
+    setData(new_data);
+  };
+
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -58,7 +65,7 @@ function Form() {
         />
         <button type="submit">OK</button>
       </form>
-      <Table data={data} />
+      <Table data={data} onRemove={onRemove} />
     </>
   );
 }

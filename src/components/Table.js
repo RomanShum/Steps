@@ -1,9 +1,15 @@
-function Table({ data }) {
+function Table({ data, onRemove }) {
+  const onRemoveItem = (e) => {
+    onRemove(e);
+  };
+
   const new_data = data.map((item) => (
     <tr>
       <td>{item.date}</td>
       <td>{item.km}</td>
-      <td>✘</td>
+      <td className="pointer" date={item.date} onClick={onRemoveItem}>
+        ✘
+      </td>
     </tr>
   ));
   return (
