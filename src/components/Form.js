@@ -34,6 +34,9 @@ function Form() {
       }
       return true;
     });
+    if (data.length === 0) {
+      setData((prevData) => [...prevData, form]);
+    }
 
     setForm({ date: "", km: 1 });
   };
