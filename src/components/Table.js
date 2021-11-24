@@ -3,6 +3,10 @@ function Table({ data, onRemove }) {
     onRemove(e);
   };
 
+  if (typeof data === "undefined") {
+    return <></>;
+  }
+
   const new_data = data.map((item) => (
     <tr>
       <td>{item.date}</td>
@@ -25,5 +29,9 @@ function Table({ data, onRemove }) {
     </table>
   );
 }
+
+Table.defaultProps = {
+  data: {},
+};
 
 export default Table;

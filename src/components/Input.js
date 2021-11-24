@@ -11,4 +11,10 @@ function Input({ title, name, value, onHandelChange }) {
   );
 }
 
+Input.defaultProps = {
+  title: "input",
+  name: "input",
+  value: "1",
+};
+
 export default Input;

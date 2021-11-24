@@ -10,25 +10,24 @@ function Form() {
   });
 
   const handleChangeForm = (e, name) => {
-    if (name === "km" && e !== "") {
-      e = parseInt(e);
-    }
-
     setForm((prevForm) => ({ ...prevForm, [name]: e }));
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (form.date.length === 0) {
+      return false;
+    }
     let isset = false;
     data.map(function (item) {
       if (form.date === item.date) {
-        item.km = Number(item.km) + Number(form.km);
+        item.km = parseFloat(item.km) + parseFloat(form.km);
         isset = true;
       }
       return true;
     });
     data.map(function (item) {
-      if (form.date > item.date && isset === false) {
+      if (isset === false) {
         isset = true;
         setData((prevData) => [...prevData, form]);
       }
@@ -40,6 +39,10 @@ function Form() {
 
     setForm({ date: "", km: 1 });
   };
+
+  data.sort(function (a, b) {
+    return new Date(a.date).getTime() - new Date(b.date).getTime();
+  });
 
   const onRemove = (e) => {
     let new_data = data.filter(
