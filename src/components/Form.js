@@ -5,7 +5,7 @@ import { useState } from "react";
 function Form() {
   const [data, setData] = useState([]);
   const [form, setForm] = useState({
-    date: "",
+    date: "01.01.2021",
     km: 1,
   });
 
@@ -37,7 +37,7 @@ function Form() {
       setData((prevData) => [...prevData, form]);
     }
 
-    setForm({ date: "", km: 1 });
+    setForm({ date: "01.01.2021", km: 1 });
   };
 
   data.sort(function (a, b) {

@@ -1,3 +1,5 @@
+import { PropTypes } from "prop-types";
+
 function Input({ title, name, value, onHandelChange }) {
   const inputChange = (e) => {
     onHandelChange(e.target.value, e.target.name);
@@ -15,6 +17,12 @@ Input.defaultProps = {
   title: "input",
   name: "input",
   value: "1",
+};
+
+Input.propTypes = {
+  title: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Input;

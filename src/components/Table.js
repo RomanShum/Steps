@@ -1,3 +1,6 @@
+import { v1 as uuidv1 } from "uuid";
+import { PropTypes } from "prop-types";
+
 function Table({ data, onRemove }) {
   const onRemoveItem = (e) => {
     onRemove(e);
@@ -8,7 +11,7 @@ function Table({ data, onRemove }) {
   }
 
   const new_data = data.map((item) => (
-    <tr>
+    <tr key={uuidv1()}>
       <td>{item.date}</td>
       <td>{item.km}</td>
       <td className="pointer" date={item.date} onClick={onRemoveItem}>
@@ -32,6 +35,10 @@ function Table({ data, onRemove }) {
 
 Table.defaultProps = {
   data: {},
+};
+
+Table.propTypes = {
+  data: PropTypes.array,
 };
 
 export default Table;
