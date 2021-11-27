@@ -36,8 +36,12 @@ function Form() {
     if (data.length === 0) {
       setData((prevData) => [...prevData, form]);
     }
-
-    setForm({ date: "01.01.2021", km: 1 });
+    let now = new Date();
+    let yyyy = now.getFullYear().toString();
+    let mm = (now.getMonth() + 1).toString();
+    let dd = now.getDate().toString();
+    let formated_date = yyyy + "-" + mm + "-" + dd;
+    setForm({ date: formated_date, km: 1 });
   };
 
   data.sort(function (a, b) {
@@ -55,12 +59,14 @@ function Form() {
     <>
       <form onSubmit={onSubmit}>
         <Input
+          type="date"
           title="Дата (ДД.ММ.ГГГГ)"
           name="date"
           value={form.date}
           onHandelChange={handleChangeForm}
         />
         <Input
+          type="text"
           title="Пройдено км"
           name="km"
           value={form.km}
